@@ -5,13 +5,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Futuretech | Student Dashboard</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="student_dashboard.css">
 </head>
 
 <body>
     <div class="student_container">
         <div class="logo_name">
-            <img src="/frontend/future_tech_logo.png" alt="institute logo" style="height:60px; border-radius:3px;">
+            <img src="/Frontend/future_tech_logo.png" alt="institute logo" style="height:60px; border-radius:3px;">
             <div class="name">
                 <h2>Futuretech</h2>
                 <p>Student Portal</p>
@@ -41,14 +41,39 @@
         <h2>Logout</h2>
     </div>
     <main class="main_content">
-        <div class="training_progress" id="card">
+        <div class="training_progress  left" id="design_card">
             <h2>Training Progress</h2>
-            <div id="subcard">
-                <h3>Core Java Fundamentals</h3>
+            <div class="progress_info">
+                <label for="course completion">Course Completion</label>
+                <span id="course_progress_value">50%</span>
             </div>
-            <div id="subcard">
-                <h3>OOPs concept</h3>
+            <progress id="course_progress" max="100" value="50"></progress>
+            <p>Module breakdown</p>
+            <div class="sub_mudules">
+                <div id="subcard">
+                    <div class="sub_progress_info">
+                        <h3>Core Java Fundamentals</h3>
+                        <span id="sub_progress_value">50%</span>
+                    </div>
+                    <progress id="sub_progressbar" value="50" max="100"></progress>
+                </div>
+                <div id="subcard">
+                    <div class="sub_progress_info">
+                        <h3>OOPs concept</h3>
+                        <span id="sub_progress_value">90%</span>
+                    </div>
+                    <progress id="sub_progressbar" value="90" max="100"></progress>
+                </div>
             </div>
+        </div>
+
+        <div class="upload_assignment  right" id="design_card">
+            <h2>Upload Submission</h2>
+            <div class="drop_area">
+                <p>Drop your files here or click to browse</p>
+                <span>Supports PDF, DOC, ZIP (Max 10MB)</span>
+            </div>
+            <button class="assignment_submit_btn">Submit Assignment</button>
         </div>
     </main>
 </body>
