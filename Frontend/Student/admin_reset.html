@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Password Reset</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        body {
+            background-color: #0a1128; 
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            overflow: hidden;
+        }
+        .container {
+            text-align: center;
+            width: 100%;
+            max-width: 420px;
+            z-index: 1;
+        }
+        .logo-circle {
+            width: 110px;
+            height: 110px;
+            background: #fff;
+            border-radius: 50%;
+            margin: 0 auto 30px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border: 4px solid #06b6d4; 
+            overflow: hidden;
+            box-shadow: 0 0 25px rgba(6, 182, 212, 0.5);
+        }
+        .logo-circle img {
+            width: 90%;
+            height: 90%;
+            object-fit: contain;
+        }
+        .login-card {
+            background: #161b22;
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.8);
+            text-align: left;
+            border: 1px solid #30363d;
+        }
+        h2 {
+            color: white;
+            font-size: 26px;
+            margin-bottom: 5px;
+        }
+        .subtitle {
+            color: #8b949e;
+            font-size: 14px;
+            margin-bottom: 15px;
+        }
+        .colorful-divider {
+            height: 4px;
+            width: 100%;
+            background: linear-gradient(90deg, #a855f7 0%, #06b6d4 100%);
+            margin-bottom: 25px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(168, 85, 247, 0.4);
+        }
+        .input-group label {
+            display: block;
+            color: #fff;
+            font-size: 15px;
+            margin-bottom: 10px;
+        }
+        .input-group input {
+            width: 100%;
+            padding: 14px 18px;
+            background: #21262d;
+            border: 1px solid #30363d; 
+            border-radius: 12px;
+            color: white;
+            outline: none;
+            font-size: 16px;
+            margin-bottom: 25px;
+            transition: 0.3s;
+        }
+        .input-group input:focus {
+            border-color: #06b6d4;
+            background: #282e37;
+        }
+        .reset-btn {
+            width: 100%;
+            padding: 15px;
+            background: linear-gradient(90deg, #a855f7 0%, #06b6d4 100%);
+            border: none;
+            border-radius: 12px;
+            color: white;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: opacity 0.3s, transform 0.2s;
+        }
+        .reset-btn:hover {
+            opacity: 0.9;
+            transform: translateY(-2px);
+        }
+        .footer-link {
+            text-align: center;
+            margin-top: 25px;
+        }
+        .footer-link a {
+            color: #8b949e;
+            text-decoration: none;
+            font-size: 14px;
+            transition: color 0.3s;
+        }
+        .footer-link a:hover {
+            color: #58a6ff;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="logo-circle">
+            <img src="https://scontent.xx.fbcdn.net/v/t1.15752-9/618468351_983159684879115_2287635934719517286_n.png?_nc_cat=108&ccb=1-7&_nc_sid=9f807c&_nc_ohc=hoB80XD9j98Q7kNvwHRK_H0&_nc_oc=AdnEHVj3rVK6a0pbpPTXcyFI_jGkFNaBtz9nTuAOYSVx1e2bvL9ffCUzyA1svub6OWMKHLyJDXGF1RVNgocXjLd6&_nc_ad=z-m&_nc_cid=0&_nc_zt=23&_nc_ht=scontent.xx&oh=03_Q7cD4QGbtLM3QruMdqf3DhwpF1SnDtyegfAY13ZHo1QPJtr2xg&oe=699D9DA5" alt="Logo"> 
+        </div>
+
+        <div class="login-card">
+            <h2>Password Reset</h2>
+            <p class="subtitle">Enter your email to receive an OTP</p>
+            
+            <div class="colorful-divider"></div>
+            
+            <form id="otpForm">
+                <div class="input-group">
+                    <label>Email Address</label>
+                    <input type="email" id="email" placeholder="Enter your Email" required>
+                </div>  
+                <button type="submit" class="reset-btn">Request OTP</button>
+                <div class="footer-link">
+                    <a href="#">Back to Login</a>
+                </div>
+            </form>
+        </div>
+    </div>
+    <script>
+        document.getElementById('otpForm').addEventListener('submit', function(e) {
+            const email = document.getElementById('email').value;
+            const pattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!pattern.test(email)) {
+                e.preventDefault();
+                alert("Please enter a valid email address!");
+            } else {
+                alert("OTP requested successfully for " + email);
+            }
+        });
+    </script>
+</body>
+</html>
