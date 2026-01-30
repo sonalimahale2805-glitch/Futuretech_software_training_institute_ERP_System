@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Assignments Section</title>
+
+<style>
+/* ===========================
+   GLOBAL STYLES
+=========================== */
+body {
+  margin: 0;
+  padding: 40px;
+  font-family: Arial, sans-serif;
+  background: #0b1220;
+  color: white;
+}
+
+/* ===========================
+   MAIN CONTAINER
+=========================== */
+.container {
+  max-width: 900px;
+  margin: auto;
+}
+
+/* ===========================
+   CARD DESIGN
+=========================== */
+.card {
+  background: #111827;
+  border-radius: 20px;
+  padding: 25px;
+  margin-bottom: 25px;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.4);
+}
+
+.card h2 {
+  margin-bottom: 15px;
+}
+
+/* ===========================
+   UPLOAD BOX
+=========================== */
+.upload-box {
+  border: 2px dashed #334155;
+  border-radius: 18px;
+  padding: 45px;
+  text-align: center;
+  margin-top: 15px;
+  color: #94a3b8;
+}
+
+.upload-box input {
+  margin-top: 15px;
+  color: white;
+}
+
+/* ===========================
+   BUTTON STYLE
+=========================== */
+button {
+  width: 100%;
+  margin-top: 20px;
+  padding: 12px;
+  border: none;
+  border-radius: 12px;
+  font-weight: bold;
+  cursor: pointer;
+  background: linear-gradient(90deg, #7c3aed, #38bdf8);
+  color: white;
+  transition: 0.3s;
+}
+
+button:hover {
+  opacity: 0.9;
+}
+
+/* ===========================
+   TASK BOX DESIGN
+=========================== */
+.task {
+  background: #1f2937;
+  padding: 18px;
+  border-radius: 16px;
+  margin-top: 15px;
+}
+
+.task h4 {
+  font-size: 16px;
+  margin: 0 0 6px;
+}
+
+.task p {
+  font-size: 13px;
+  color: #94a3b8;
+  margin: 0 0 8px;
+}
+
+.task small {
+  color: #94a3b8;
+}
+
+/* ===========================
+   BADGES (STATUS)
+=========================== */
+.badge {
+  display: inline-block;
+  margin-top: 10px;
+  padding: 5px 12px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: bold;
+}
+
+/* Status Colors */
+.pending {
+  background: #f59e0b;
+}
+
+.submitted {
+  background: #0ea5e9;
+}
+
+.reviewed {
+  background: #22c55e;
+}
+</style>
+
+</head>
+
+<body>
+
+<div class="container">
+
+  <!-- UPLOAD SUBMISSION -->
+  <div class="card">
+    <h2>Upload Submission</h2>
+
+    <div class="upload-box">
+      Drop your files here or click to browse <br>
+      <small>Supports PDF, DOC, ZIP (Max 10MB)</small><br><br>
+
+      <input type="file" id="file">
+    </div>
+
+    <button onclick="submitAssignment()">Submit Assignment</button>
+  </div>
+
+  <!-- TASKS DUE -->
+  <div class="card">
+    <h2>Tasks Due</h2>
+    <div id="taskList"></div>
+  </div>
+
+</div>
+
+<script>
+/* ===========================
+   TASK DATA
+=========================== */
+let tasks = [
+  {
+    name: "Java Collections Framework",
+    desc: "Implement ArrayList, LinkedList, HashMap with examples",
+    deadline: "2026-02-05",
+    status: "Pending"
+  },
+  {
+    name: "Exception Handling Exercise",
+    desc: "Create banking app with proper exception handling",
+    deadline: "2026-02-10",
+    status: "Pending"
+  },
+  {
+    name: "OOP Principles Project",
+    desc: "Design a Library Management System using OOP concepts",
+    deadline: "2026-02-01",
+    status: "Submitted"
+  },
+  {
+    name: "Core Java Basics",
+    desc: "Exercises on data types, operators, control flow",
+    deadline: "2026-01-30",
+    status: "Reviewed",
+    grade: "A+"
+  }
+];
+
+/* ===========================
+   DISPLAY TASKS
+=========================== */
+function displayTasks() {
+  let taskDiv = document.getElementById("taskList");
+  taskDiv.innerHTML = "";
+
+  tasks.forEach(t => {
+    let badgeText = t.status;
+
+    if (t.grade) {
+      badgeText += " ✔ Grade: " + t.grade;
+    }
+
+    taskDiv.innerHTML += `
+      <div class="task">
+        <h4>${t.name}</h4>
+        <p>${t.desc}</p>
+        <small>Deadline: ${t.deadline}</small><br>
+        <span class="badge ${t.status.toLowerCase()}">${badgeText}</span>
+      </div>
+    `;
+  });
+}
+
+displayTasks();
+
+/* ===========================
+   SUBMIT FUNCTION
+=========================== */
+function submitAssignment() {
+  const fileInput = document.getElementById("file");
+  const file = fileInput.files[0];
+
+  if (!file) {
+    alert("Please select a file to submit!");
+    return;
+  }
+
+  const newTask = {
+    name: file.name,
+    desc: "Uploaded file",
+    deadline: "Today",
+    status: "Submitted"
+  };
+
+  tasks.push(newTask);
+  displayTasks();
+
+  alert("File submitted successfully: " + file.name);
+
+  fileInput.value = "";
+}
+</script>
+
+</body>
+</html>
