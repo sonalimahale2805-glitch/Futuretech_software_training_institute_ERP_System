@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Fee History</title>
+  <style>
+    :root {
+      --bg_color: #0f172a;
+      --card_bg_color: #151e31;
+      --card_border_color: #2c3346;
+      --card_shadow: #00000080;
+      --card_hover_border_color: #384158;
+      --white_text: #fff;
+      --gray_text: #99a1af;
+      --input_bg_color: #21293c;
+      --input_border_color: #38404f;
+      --btn_g_left: #923aea;
+      --btn_g_right: #2cd1ee;
+      --btn_text_color: #ffffff;
+    }
+
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: var(--bg_color);
+      color: var(--white_text);
+    }
+
+    .main-content {
+      padding: 25px;
+    }
+
+    /* 3 cards */
+    .fee-summary {
+      display: flex;
+      gap: 20px;
+      width: 100%;
+      margin-bottom: 30px;
+    }
+
+    .summary-card {
+      background: var(--card_bg_color);
+      border: 1px solid var(--card_border_color);
+      padding: 26px;
+      border-radius: 12px;
+      box-shadow: 0 0 10px var(--card_shadow);
+    }
+
+    /* same id for all 3  cards*/
+    .top-card {
+      flex: 1;                 
+      font-size: 18px;
+    }
+
+    .top-card p {
+      color: var(--gray_text);
+      margin: 0;
+      font-size: 18px;
+    }
+
+    .top-card h3 {
+      margin-top: 10px;
+      font-size: 32px;        
+      font-weight: bold;
+    }
+
+    .summary-card.paid h3 {
+      color: #22c55e;
+    }
+
+    .summary-card.pending h3 {
+      color: #f97316;
+    }
+
+    .timeline {
+      border-left: 3px solid var(--card_border_color);
+      padding-left: 25px;
+    }
+
+    .timeline-item {
+      position: relative;
+      margin-bottom: 25px;
+    }
+
+    .dot {
+      width: 14px;
+      height: 14px;
+      background: #22c55e;
+      border-radius: 50%;
+      position: absolute;
+      left: -31px;
+      top: 22px;
+    }
+
+    .timeline-item.pending .dot {
+      background: #f97316;
+    }
+
+    .content {
+      background: var(--card_bg_color);
+      border: 1px solid var(--card_border_color);
+      padding: 18px 22px;
+      border-radius: 10px;
+      box-shadow: 0 0 8px var(--card_shadow);
+    }
+
+    .content h4 {
+      margin: 0;
+      font-size: 18px;
+    }
+
+    .content p {
+      color: var(--gray_text);
+      margin: 6px 0 12px;
+    }
+
+    .row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .amount {
+      font-size: 18px;
+      font-weight: bold;
+    }
+
+    .status {
+      color: #22c55e;
+      font-weight: bold;
+    }
+
+    .pending-text {
+      color: #f97316;
+      font-weight: bold;
+    }
+  </style>
+</head>
+
+<body>
+
+<div class="main-content">
+
+  <h2>Fee History</h2>
+
+  <!--3 Cards -->
+  <div class="fee-summary">
+    <div class="summary-card top-card">
+      <p>Total Fee</p>
+      <h3>₹45,000</h3>
+    </div>
+
+    <div class="summary-card paid top-card">
+      <p>Paid</p>
+      <h3>₹30,000</h3>
+    </div>
+
+    <div class="summary-card pending top-card">
+      <p>Pending</p>
+      <h3>₹15,000</h3>
+    </div>
+  </div>
+
+  <h3>Payment History</h3>
+
+  <div class="timeline">
+
+    <div class="timeline-item">
+      <div class="dot"></div>
+      <div class="content">
+        <h4>Installment 1</h4>
+        <p>Due: 2025-12-15</p>
+        <div class="row">
+          <span class="amount">₹15,000</span>
+          <span class="status">Paid</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="timeline-item">
+      <div class="dot"></div>
+      <div class="content">
+        <h4>Installment 2</h4>
+        <p>Due: 2026-01-15</p>
+        <div class="row">
+          <span class="amount">₹15,000</span>
+          <span class="status">Paid</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="timeline-item pending">
+      <div class="dot"></div>
+      <div class="content">
+        <h4>Installment 3</h4>
+        <p>Due: 2026-02-15</p>
+        <div class="row">
+          <span class="amount">₹15,000</span>
+          <span class="pending-text">Pending</span>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+</div>
+
+</body>
+</html>
