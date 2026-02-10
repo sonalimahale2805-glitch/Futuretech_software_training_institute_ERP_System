@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Assignments</title>
+  <link rel="stylesheet" href="Admin_ASSIGNMENTS.css" />
+</head>
+<body>
+
+<div class="layout">
+
+  <!-- LEFT SIDEBAR -->
+  <aside class="sidebar">
+    <h2 class="logo">Futuretech</h2>
+    <button class="active">📘Assignments</button>
+  </aside>
+
+  <!-- MAIN CONTENT -->
+  <main class="content">
+
+    <!-- CREATE ASSIGNMENT -->
+    <section class="card">
+      <h3>Create Assignment</h3>
+
+      <input type="text" id="title" placeholder="Assignment Title" />
+      <input type="date" id="date" />
+      <textarea id="desc" placeholder="Description"></textarea>
+
+      <input type="file" id="file" />
+      <button id="createBtn">Create Assignment</button>
+    </section>
+
+    <!-- TABLE -->
+    <section class="card">
+      <h3>Submission Tracker</h3>
+
+      <table>
+        <thead>
+          <tr>
+            <th>Student</th>
+            <th>Assignment</th>
+            <th>Deadline</th>
+            <th>Status</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+        <tbody id="tableBody"></tbody>
+      </table>
+    </section>
+
+  </main>
+</div>
+
+<script src="Admin_ASSIGNMENTS.js"></script>
+</body>
+</html>
