@@ -9,16 +9,16 @@
 </head>
 
 <body>
-    <!-- hii -->
     <div class="student_container">
-        <div class="logo_name">
-            <img src="/Frontend/future_tech_logo.png" alt="institute logo" style="height:60px; border-radius:3px;">
+        <div class="logo_name" id="logo_name">
+            <img id="institute_logo" src="/Frontend/future_tech_logo.png" alt="institute logo">
             <div class="name">
                 <h2>Futuretech</h2>
                 <p>Student Portal</p>
             </div>
         </div>
         <div class="heading_section">
+            <span id="menuBtn" class="menuBtn">☰</span>
             <div class="title">
                 <h2>My Dashboard</h2>
                 <p>Welcome back, <span>Student Name</span></p>
@@ -28,18 +28,20 @@
             </div>
         </div>
     </div>
-    <div class="navbar_section">
-        <nav class="navbar">
-            <a href="#dashboard" class="active">Dashboard</a>
-            <a href="#my_domain" class="deactive">My Domain</a>
-            <a href="#assignment" class="deactive">Assignments</a>
-            <a href="#fee_history" class="deactive">Fee History</a>
-            <a href="#profile" class="deactive">Profile</a>
-        </nav>
-    </div>
+    <div id="navbar_and_logout_section">
+        <div class="navbar_section" id="sidebar">
+            <nav class="navbar" id="navbar">
+                <a href="#dashboard" class="active">Dashboard</a>
+                <a href="#my_domain" class="deactive">My Domain</a>
+                <a href="#assignment" class="deactive">Assignments</a>
+                <a href="#fee_history" class="deactive">Fee History</a>
+                <a href="#profile" class="deactive">Profile</a>
+            </nav>
+        </div>
 
-    <div class="logout_section">
-        <h2>Logout</h2>
+        <div class="logout_section" id="logout_section">
+            <h2>Logout</h2>
+        </div>
     </div>
     <main class="main_content">
         <div class="training_progress  left" id="design_card">
@@ -99,11 +101,29 @@
             select_file.click()
         })
 
-        select_file.addEventListener('change', () => {
+        select_file.addEventListener('change', function () {
             if (this.files.length > 0) {
-                updateThumbnail(this.files[0])
+                console.log(this.files[0].name);
             }
         });
+
+        const menuBtn = document.getElementById("menuBtn");
+        const navbar_and_logout_section = document.getElementById("navbar_and_logout_section");
+
+        menuBtn.addEventListener("click", () => {
+            if (window.innerWidth <= 768) {
+                navbar_and_logout_section.classList.toggle("show");
+            }
+        });
+
+        window.addEventListener("resize", () => {
+            if (window.innerWidth > 768) {
+                navbar_and_logout_section.classList.add("show");
+            } else {
+                navbar_and_logout_section.classList.remove("show");
+            }
+        });
+
 
     </script>
 </body>

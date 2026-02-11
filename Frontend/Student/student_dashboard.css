@@ -30,7 +30,119 @@ body {
 
 }
 
+#institute_logo {
+    height: 60px;
+    border-radius: 4px;
+}
 
+.menuBtn {
+    display: none;
+    font-size: 28px;
+    cursor: pointer;
+    color: white;
+}
+
+.menuBtn:hover {
+    transform: scale(.9);
+}
+
+.menuBtn:active {
+    transform: scale(1);
+}
+
+/* MOBILE VIEW: Screens 768px and below */
+
+@media (max-width: 768px) {
+
+    body,
+    html {
+        overflow-x: hidden;
+        width: 100%;
+        position: relative;
+        margin: 0;
+        padding: 0;
+        height: 100%;
+    }
+
+    .student_container {
+        overflow-x: hidden;
+        width: 100vw;
+        position: relative;
+    }
+
+    .logo_name,
+    .logout_section {
+        margin-top: 0 !important;
+        position: fixed !important;
+        left: -260px;
+        width: 260px;
+        transition: 0.3s ease-in-out;
+        z-index: 3000;
+        display: flex !important;
+        border-right: 1px solid var(--card_border_color);
+    }
+
+
+    .logo_name {
+        top: 0;
+        height: 90px;
+        background-color: var(--navbar_bg_color);
+    }
+
+
+    #navbar_and_logout_section {
+        opacity: 0;
+        transform: translateX(-20px);
+        pointer-events: none;
+        transition: 0.3s ease-in-out;
+    }
+
+    #navbar_and_logout_section.show {
+        opacity: 1;
+        transform: translateX(0);
+        pointer-events: auto;
+    }
+
+
+    .main_content {
+        display: flex !important;
+        flex-direction: column !important;
+        margin-left: 0 !important;
+        width: 100% !important;
+        gap: 20px !important;
+    }
+
+    #design_card,
+    .left,
+    .right,
+    .training_progress,
+    .upload_assignment,
+    .task_due {
+        width: 100% !important;
+        min-width: 100% !important;
+        max-width: 100% !important;
+        flex: none !important;
+        margin-left: 0 !important;
+    }
+
+    #subcard,
+    progress {
+        width: 100% !important;
+    }
+
+    .menuBtn {
+        display: block;
+    }
+
+    .title h2 {
+        margin-bottom: 0;
+    }
+
+    .title p,
+    .title span {
+        display: none;
+    }
+}
 
 h1,
 h2 {
@@ -123,6 +235,7 @@ hr {
 .profile_logo {
     background: linear-gradient(135deg, var(--btn_g_left), var(--btn_g_right));
     padding: 15px;
+    flex-shrink: 0;
     border-radius: 50%;
     color: var(--white_text);
 }
@@ -131,6 +244,7 @@ hr {
 
 .navbar_section {
     display: flex;
+    transition: .2s;
 }
 
 .navbar {
@@ -146,6 +260,7 @@ hr {
     border-top: none;
     height: calc(100vh - 180px);
     padding: 30px 0px;
+    transition: .2s;
 }
 
 .navbar a {
