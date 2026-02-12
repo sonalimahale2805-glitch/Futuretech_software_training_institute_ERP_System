@@ -29,6 +29,107 @@ body {
 
 }
 
+.menuBtn {
+    display: none;
+    font-size: 28px;
+    cursor: pointer;
+    color: white;
+}
+
+.menuBtn:hover {
+    transform: scale(.9);
+}
+
+.menuBtn:active {
+    transform: scale(1);
+}
+
+/* mobile responsive */
+@media (max-width: 768px) {
+
+    body,
+    html {
+        overflow-x: hidden;
+        width: 100%;
+        position: relative;
+        margin: 0;
+        padding: 0;
+        height: 100%;
+    }
+
+    .admin_container {
+        overflow-x: hidden;
+        width: 100vw;
+        position: relative;
+    }
+
+    .logo_name,
+    .logout_section {
+        margin-top: 0 !important;
+        position: fixed !important;
+        left: -260px;
+        width: 260px;
+        transition: 0.3s ease-in-out;
+        z-index: 3000;
+        display: flex !important;
+        border-right: 1px solid var(--card_border_color);
+    }
+
+
+    .logo_name {
+        top: 0;
+        height: 90px;
+        background-color: var(--navbar_bg_color);
+    }
+
+
+    #navbar_and_logout_section {
+        opacity: 0;
+        transform: translateX(-20px);
+        pointer-events: none;
+        transition: 0.3s ease-in-out;
+    }
+
+    #navbar_and_logout_section.show {
+        opacity: 1;
+        transform: translateX(0);
+        pointer-events: auto;
+    }
+
+
+    .main_content {
+        display: flex !important;
+        flex-direction: column !important;
+        margin-left: 0 !important;
+        width: 100% !important;
+        gap: 20px !important;
+    }
+
+    .menuBtn {
+        display: block;
+    }
+
+    .title h2 {
+        margin-bottom: 0;
+    }
+
+    .title p,
+    .title span {
+        display: none;
+    }
+
+    .quick_pannel_subcard {
+        flex: 0 0 calc(50% - 15px);
+    }
+
+    .recent_activity table {
+        min-width: 700px;
+        width: max-content;
+        border-collapse: collapse;
+    }
+}
+
+
 h1,
 h2 {
     color: var(--white_text);
@@ -70,7 +171,6 @@ label {
     border: 1px solid var(--gray_text);
     border-top: none;
     border-left: none;
-    /* position: fixed; */
 }
 
 .profile_logo {
@@ -179,7 +279,6 @@ label {
     background-color: #fc040417;
     padding: 20px 40px;
     border-radius: 15px;
-    /* margin-left: 20px; */
     border: 1px solid #fc040449;
     box-shadow: 0 10px 25px var(--card_shadow);
 }
@@ -207,43 +306,21 @@ label {
     flex-direction: column;
     gap: 20px;
     padding: 20px;
-    /* width: 100%; */
     overflow-y: auto;
     overflow-x: hidden;
-}
 
-#card {
-    background-color: var(--card_bg_color);
-    width: 380px;
-    padding: 30px;
-    border-radius: 20px;
-    border: 1px solid var(--card_border_color);
-    box-shadow: 0 10px 25px var(--card_shadow);
-    display: flex;
-    flex-direction: column;
-    transition: .1s;
-}
-
-#card #email_add {
-    color: var(--white_text);
-    text-align: left;
-    font-size: 18px;
-    display: flex;
-    flex-direction: column;
-    margin-bottom: 1px;
-    margin-left: 1px;
-}
-
-#card:hover {
-    border: 1px solid var(--card_hover_border_color);
+    width: calc(100vw - 245px);
+    /* IMPORTANT */
+    min-height: calc(100vh - 90px);
 }
 
 .quick_info_pannel {
     display: flex;
     flex-wrap: wrap;
-    gap: 2%;
-    height: max-content;
+    gap: 15px;
+    width: 100%;
 }
+
 
 .quick_pannel_subcard {
     background-color: var(--card_bg_color);
@@ -255,10 +332,11 @@ label {
     flex: 1;
     flex-direction: column;
     transition: .2s;
-    width: calc((100vw - 401px) / 4.3);
+    width: 23%;
     text-align: center;
     cursor: default;
 }
+
 
 .quick_info_pannel h1 {
     color: var(--white_text);
@@ -285,6 +363,7 @@ label {
     border: 1px solid var(--card_border_color);
     box-shadow: 0 10px 25px var(--card_shadow);
     transition: .2s;
+
 }
 
 .recent_activity:hover {
@@ -299,7 +378,6 @@ label {
 
 .recent_activity table {
     width: 100%;
-    table-layout: fixed;
     border-collapse: collapse;
 }
 
@@ -320,6 +398,12 @@ label {
 .recent_activity tbody tr:hover {
     transition: .2s;
     background-color: var(--navbar_bg_color);
+}
+
+.enable_scroll {
+    width: 100%;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
 }
 
 .admin_container {
