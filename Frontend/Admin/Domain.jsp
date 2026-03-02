@@ -1,0 +1,410 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<%@ page import="java.util.*" %>
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Futuretech - My Domain</title>
+
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+<style>*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Arial, sans-serif;
+}
+
+body {
+  background: #0f172a;
+  color: #fff;
+}
+
+.container {
+  display: flex;
+  min-height: 100vh;
+}
+
+.sidebar {
+  width: 240px;
+  background: #111827;
+  padding: 20px;
+  position: relative;
+  margin: 0;
+  border-right: 2px solid rgba(255, 255, 255, 0.08);
+  box-shadow: auto;
+}
+.logo-name {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 30px;
+}
+
+.logo-name img {
+  width: 60px;
+  height: 60px;
+  object-fit: contain;
+}
+
+.logo-name .name h2 {
+  margin: 0;
+  font-size: 22px;
+  color: #38bdf8;
+}
+
+.logo-name .name p {
+  margin: 0;
+  font-size: 13px;
+  color: #9ca3af;
+}
+
+.sidebar h2 {
+  color: #38bdf8;
+}
+
+.sidebar .sub {
+  font-size: 12px;
+  color: #9ca3af;
+  margin-bottom: 20px;
+}
+
+.menu {
+  list-style: none;
+}
+
+.menu li {
+  padding: 12px;
+  margin-bottom: 10px;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.menu li.active,
+.menu li:hover {
+  background: linear-gradient(to right, #a855f7, #38bdf8);
+}
+
+.logout-btn {
+  position: absolute;
+  bottom: 20px;
+  left: 20px;
+  width: calc(100% -40px);
+  padding: 10px;
+  background:transparent;
+  color:#ef4444;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.main {
+  flex: 1;
+  padding: 20px;
+}
+
+header h1 {
+  font-size: 26px;
+}
+
+header p {
+  color: #9ca3af;
+  margin-bottom: 20px;
+}
+
+.card {
+  background: #1f2933;
+  padding: 20px;
+  border-radius: 16px;
+  margin-bottom: 20px;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 15px;
+  margin-top: 15px;
+}
+
+.box {
+  background: #111827;
+  padding: 15px;
+  border-radius: 12px;
+}
+
+.tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.tags span {
+  background: #111827;
+  padding: 8px 14px;
+  border-radius: 20px;
+  font-size: 14px;
+}
+
+.achievement {
+  background: #111827;
+  padding: 15px;
+  border-radius: 12px;
+  margin-top: 10px;
+}
+
+@media (max-width: 768px) {
+  .container {
+    flex-direction: column;
+  }
+
+  .sidebar {
+    width: 100%;
+  }
+
+  .grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+i {
+  color: #38bdf8;
+  font-size: 16px;
+  margin-right: 6px;
+}
+.menu li {
+  color: #9ca3af;
+}
+
+.menu li i {
+  color: #38bdf8;
+}
+
+.menu li:hover,
+.menu li.active {
+  color: #ffffff;
+}
+
+.menu li:hover i,
+.menu li.active i {
+  color: #ffffff;
+}
+
+.card i {
+  color: #a855f7;
+}
+
+.tags i {
+  color: #22c55e;
+}
+
+.box i {
+  color: #38bdf8;
+}
+
+
+svg {
+  fill: #38bdf8;
+}
+
+
+img.icon {
+  filter: brightness(0) saturate(100%) invert(55%) sepia(98%)
+    saturate(420%) hue-rotate(170deg);
+}
+
+.sidebar-header {
+  display: flex !important;
+  align-items: center !important;
+  gap: 12px;
+  margin-bottom: 30px;
+}
+
+.sidebar-logo {
+  width: 55px;
+  height: auto;
+  flex-shrink: 0;
+  object-fit: contain;
+}
+
+.sidebar-text {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.2;
+}
+
+.sidebar-text .title {
+  font-size: 22px;
+  font-weight: 700;
+  color: #38bdf8;
+}
+
+.sidebar-text .subtitle {
+  font-size: 13px;
+  color: #9ca3af;
+}
+
+header {
+  position: relative;
+  header::after {
+    content:"";
+    left: 0;
+    bottom: 0;
+    height: 1px;
+    background:  linear-gradient(to right, transparent,#374151,transparent);
+  }
+}
+
+.profile-badge {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #38bdf8, #a855f7);
+  color: #fff;
+  font-weight: bold;
+  font-size: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  box-shadow: 0 0 10px #00000080;
+}
+
+@media (max-width: 768px) {
+  .profile-badge {
+    top: -5px;
+    right: -5px;
+    width: 36px;
+    height: 36px;
+    font-size: 13px;
+  }
+}
+
+.top-box {
+  background: #111827;          
+  border-radius: 0;           
+  padding-bottom: 16px;
+  box-shadow: none; 
+  position: relative;
+  margin-bottom: 24px;
+}
+.container {
+  position: relative;
+}
+
+.horizontal-divider {
+  position: absolute;
+  top: 95px;  
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background: rgba(255, 255, 255, 0.08);
+  z-index: 10;
+}
+<%= application.getResourceAsStream("") %>
+</style>
+</head>
+
+<body>
+
+<div class="container">
+  <aside class="sidebar">
+    <div class="logo-name">
+      <img src="images/logo.png" class="sidebar-logo" alt="Futuretech logo">
+      <div class="name">
+        <h2>Futuretech</h2>
+        <p>Student Portal</p>
+      </div>
+    </div>
+
+    <ul class="menu">
+      <li>Dashboard</li>
+      <li class="active">My Domain</li>
+      <li>Assignments</li>
+      <li>Fee History</li>
+      <li>Profile</li>
+    </ul>
+
+    <button class="logout-btn">
+      <i class="fas fa-sign-out-alt"></i> Logout
+    </button>
+  </aside>
+
+  <div class="horizontal-divider"></div>
+
+  <main class="main">
+
+    <header class="top-box">
+      <h1>My Domain</h1>
+      <p>Welcome back, ${studentName}</p>
+      <div class="profile-badge">
+        ${studentName != null ? studentName.substring(0,1) : "S"}
+      </div>
+    </header>
+
+    <!-- Course Card -->
+    <section class="card">
+      <h2>
+        <i class="fa-solid fa-layer-group"></i>
+        ${courseName}
+      </h2>
+      <p>Batch: ${batch}</p>
+
+      <div class="grid">
+        <div class="box">
+          <i class="fa-solid fa-chalkboard-user"></i><br>
+          Instructor<br><b>${instructor}</b>
+        </div>
+
+        <div class="box">
+          <i class="fa-solid fa-clock"></i><br>
+          Duration<br><b>${duration}</b>
+        </div>
+
+        <div class="box">
+          <i class="fa-solid fa-calendar-days"></i><br>
+          Start Date<br><b>${startDate}</b>
+        </div>
+
+        <div class="box">
+          <i class="fa-solid fa-calendar-check"></i><br>
+          End Date<br><b>${endDate}</b>
+        </div>
+      </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section class="card">
+      <h3>
+        <i class="fa-solid fa-code"></i>
+        Skills & Technologies Covered
+      </h3>
+
+      <div class="tags">
+        <%
+            List<String> skills = (List<String>) request.getAttribute("skills");
+            if(skills != null){
+                for(String skill : skills){
+        %>
+            <span>
+                <i class="fa-solid fa-check"></i>
+                <%= skill %>
+            </span>
+        <%
+                }
+            }
+        %>
+      </div>
+    </section>
+
+  </main>
+</div>
+<script src="Domain.js"></script>
+</body>
+</html>
