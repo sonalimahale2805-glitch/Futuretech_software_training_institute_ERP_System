@@ -292,13 +292,12 @@ hr {
     color: var(--white_text);
     font-size: 21px;
     box-shadow: 0 10px 25px var(--card_shadow);
-    transition: 0.3s;
+    transition:.3s;
 
 }
 
 .active:hover {
     box-shadow: 0 0 10px 1px var(--btn_g_right);
-
 }
 
 .deactive {

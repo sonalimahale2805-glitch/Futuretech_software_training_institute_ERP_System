@@ -18,6 +18,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Futuretech | Student Dashboard</title>
     <link rel="stylesheet" href="${pageContext.request.contextPath}/Assets/Student_css/student_dashboard.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/Assets/Student_css/student_fee_history.css">
     <link rel="shortcut icon" href="${pageContext.request.contextPath}/Assets/images/logo.png" type="image/x-icon">
 </head>
 
@@ -44,10 +45,10 @@
     <div id="navbar_and_logout_section">
         <div class="navbar_section" id="sidebar">
             <nav class="navbar" id="navbar">
-                <a href="${pageContext.request.contextPath}/StudentDashboard" class="active">Dashboard</a>
+                <a href="${pageContext.request.contextPath}/StudentDashboard" class="deactive">Dashboard</a>
                 <a href="${pageContext.request.contextPath}/StudentMyDomain" class="deactive">My Domain</a>
                 <a href="${pageContext.request.contextPath}/Student/student_assignment.jsp" class="deactive">Assignments</a>
-                <a href="${pageContext.request.contextPath}/Student/student_fee_history.jsp" class="deactive">Fee History</a>
+                <a href="${pageContext.request.contextPath}/Student/student_fee_history.jsp" class="active">Fee History</a>
                 <a href="${pageContext.request.contextPath}/Student/student_profile.jsp" class="deactive">Profile</a>
             </nav>
         </div>
@@ -57,69 +58,10 @@
         </div>
     </div>
     <main class="main_content">
-        <div class="training_progress  left" id="design_card">
-            <h2>Training Progress</h2>
-            <div class="progress_info">
-                <label for="course completion">Course Completion</label>
-                <span id="course_progress_value">50%</span>
-            </div>
-            <progress id="course_progress" max="100" value="50"></progress>
-            <p>Module breakdown</p>
-            <div class="sub_mudules">
-                <div id="subcard">
-                    <div class="sub_progress_info">
-                        <h3>Core Java Fundamentals</h3>
-                        <span id="sub_progress_value">50%</span>
-                    </div>
-                    <progress id="sub_progressbar" value="50" max="100"></progress>
-                </div>
-                <div id="subcard">
-                    <div class="sub_progress_info">
-                        <h3>OOPs concept</h3>
-                        <span id="sub_progress_value">90%</span>
-                    </div>
-                    <progress id="sub_progressbar" value="90" max="100"></progress>
-                </div>
-            </div>
-        </div>
-
-        <div class="right">
-            <div class="upload_assignment" id="design_card">
-                <h2>Upload Submission</h2>
-                <div class="drop_area">
-                    <p> Click to browse</p>
-                    <span>Supports PDF, DOC, ZIP (Max 10MB)</span>
-                    <input type="file" id="select_file" accept=".pdf,.doc,.docx,.zip">
-                </div>
-                <button class="assignment_submit_btn">Submit Assignment</button>
-            </div>
-
-            <div class="task_due" id="design_card">
-                <h2>Task Due</h2>
-                <div id="subcard">
-                    <h3>Java Collection Framework</h3>
-                    <p id="description">Implement ArrayList, LinkedList, and HashMap with custom examples</p>
-                    <span id="time_left">5 days left</span>
-                    <p id="status">Pending</p>
-                </div>
-            </div>
-        </div>
+        
     </main>
 
     <script>
-        const dropArea = document.querySelector('.drop_area');
-        const select_file = document.getElementById('select_file');
-
-        dropArea.addEventListener('click', () => {
-            select_file.click()
-        })
-
-        select_file.addEventListener('change', function () {
-            if (this.files.length > 0) {
-                console.log(this.files[0].name);
-            }
-        });
-
         const logout_btn=document.getElementById("logout_btn");
         logout_btn.addEventListener('click',()=>{
         	if(confirm("Do you realy want to Logout"))

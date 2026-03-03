@@ -45,12 +45,12 @@
         <div class="navbar_section">
             <nav class="navbar">
                 <a href="#dashboard" class="active">Dashboard</a>
-                <a href="#my_domain" class="deactive">Student Directory</a>
-                <a href="#my_domain" class="deactive">Course Management</a>
-                <a href="#fee_history" class="deactive">Fee Tracker</a>
+                <a href="#student_directory" class="deactive">Student Directory</a>
+                <a href="#course_management" class="deactive">Course Management</a>
+                <a href="#fee_tracker" class="deactive">Fee Tracker</a>
                 <a href="#assignment" class="deactive">Assignments</a>
-                <a href="#assignment" class="deactive">Register</a>
-                <a href="#profile" class="deactive">Settings</a>
+                <a href="#register" class="deactive">Register</a>
+                <a href="#settings" class="deactive">Settings</a>
             </nav>
         </div>
 
