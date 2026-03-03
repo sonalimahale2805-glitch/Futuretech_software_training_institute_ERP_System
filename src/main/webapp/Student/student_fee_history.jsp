@@ -1,15 +1,5 @@
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<%
-	if(session.getAttribute("userrole")==null){
-%>
-	<script type="text/javascript">
-		alert("Access Denied! Please login first.")
-		window.location.href="../student_authentication.jsp"
-	</script>
-	<%
-	return;
-	}
-	%>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -58,9 +48,84 @@
         </div>
     </div>
     <main class="main_content">
-        <h1>Fee History Section</h1>
-    </main>
+        <div class="main-content">
 
+  <h2>Fee History</h2>
+
+  <!--3 Cards -->
+  <div class="fee-summary">
+    <div class="summary-card top-card">
+      <p>Total Fee</p>
+      <h3>₹45,000</h3>
+    </div>
+
+    <div class="summary-card paid top-card">
+      <p>Paid</p>
+      <h3>₹30,000</h3>
+    </div>
+
+    <div class="summary-card pending top-card">
+      <p>Pending</p>
+      <h3>₹15,000</h3>
+    </div>
+  </div>
+
+  <h3>Payment History</h3>
+
+  <div class="timeline">
+
+    <div class="timeline-item">
+      <div class="dot"></div>
+      <div class="content">
+        <h4>Installment 1</h4>
+        <p>Due: 2025-12-15</p>
+        <div class="row">
+          <span class="amount">₹15,000</span>
+          <span class="status">Paid</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="timeline-item">
+      <div class="dot"></div>
+      <div class="content">
+        <h4>Installment 2</h4>
+        <p>Due: 2026-01-15</p>
+        <div class="row">
+          <span class="amount">₹15,000</span>
+          <span class="status">Paid</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="timeline-item pending">
+      <div class="dot"></div>
+      <div class="content">
+        <h4>Installment 3</h4>
+        <p>Due: 2026-02-15</p>
+        <div class="row">
+          <span class="amount">₹15,000</span>
+          <span class="pending-text">Pending</span>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+</div>
+    </main>
+	
+	<%
+	if(session.getAttribute("userrole")==null){
+%>
+	<script type="text/javascript">
+		alert("Access Denied! Please login first.")
+		window.location.href="../student_authentication.jsp"
+	</script>
+	<%
+	return;
+	}
+	%>
     <script>
         const logout_btn=document.getElementById("logout_btn");
         logout_btn.addEventListener('click',()=>{

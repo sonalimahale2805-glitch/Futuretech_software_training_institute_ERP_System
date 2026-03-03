@@ -71,7 +71,6 @@
                         autocomplete="current-password" required>
                      <button id="set_password_btn" type="submit">Set Password</button>
                 </form>
-                <span id="resend_otp">Didn't get a OTP? Resend</span>
             </div>
         </div>
 

@@ -1,15 +1,5 @@
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<%
-	if(session.getAttribute("userrole")==null){
-%>
-	<script type="text/javascript">
-		alert("Access Denied! Please login first.")
-		window.location.href="../student_authentication.jsp"
-	</script>
-	<%
-	return;
-	}
-	%>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -106,6 +96,17 @@
         </div>
     </main>
 
+	<%
+	if(session.getAttribute("userrole")==null){
+%>
+	<script type="text/javascript">
+		alert("Access Denied! Please login first.")
+		window.location.href="../student_authentication.jsp"
+	</script>
+	<%
+	return;
+	}
+	%>
     <script>
         const dropArea = document.querySelector('.drop_area');
         const select_file = document.getElementById('select_file');

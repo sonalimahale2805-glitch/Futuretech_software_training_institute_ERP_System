@@ -1,15 +1,5 @@
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<%
-	if(session.getAttribute("userrole")==null){
-%>
-	<script type="text/javascript">
-		alert("Access Denied! Please login first.")
-		window.location.href="../student_authentication.jsp"
-	</script>
-	<%
-	return;
-	}
-	%>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -58,9 +48,65 @@
         </div>
     </div>
     <main class="main_content">
-        <h1>Profile Section</h1>
+        <div class="content-container">
+      <div class="profile-card">
+        <div class="avatar-box" id="avatarBox">
+          <img id="profileImg">
+          <span id="avatarText">SM</span>
+          <input type="file" id="imgUpload" hidden>
+        </div>
+        <div class="user-info">
+          <h3 id="displayName">Shubhada Mate</h3>
+          <p id="displayEmail">shubhada@123.com</p>
+          <div class="domain-text">
+            <p id="displayDomain">Domain:Full Stack Development</p>
+          </div>
+          <br>
+          <button class="edit-btn" id="editBtn">Edit Profile</button>
+        </div>
+      </div>
+
+      <div class="info-panel">
+        <div class="row">
+          <label>Student Name</label>
+          <input type="text" value="Shubhada Mate" disabled>
+        </div>
+        <div class="row">
+          <label>Domain</label>
+          <input type="text" value="Full Stack Development" disabled>
+        </div>
+        <div class="row">
+          <label>Batch</label>
+          <input type="text" value="Spring 2026" disabled>
+        </div>
+        <div class="row">
+          <label>Contact Number</label>
+          <input type="text" value="+91 1234567890" disabled>
+        </div>
+        <div class="row">
+          <label>Student E-Mail</label>
+          <input type="text" value="shubhada@123.com" disabled>
+        </div>
+        <div class="row">
+          <label>Account Status</label>
+          <input type="text" value="Active" disabled style="color: #4ade80;">
+        </div>
+      </div>
+    </div>
     </main>
 
+
+	<%
+	if(session.getAttribute("userrole")==null){
+%>
+	<script type="text/javascript">
+		alert("Access Denied! Please login first.")
+		window.location.href="../student_authentication.jsp"
+	</script>
+	<%
+	return;
+	}
+	%>
     <script>
         const logout_btn=document.getElementById("logout_btn");
         logout_btn.addEventListener('click',()=>{

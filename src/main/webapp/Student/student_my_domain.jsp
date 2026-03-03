@@ -1,15 +1,5 @@
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<%
-	if(session.getAttribute("userrole")==null){
-%>
-	<script type="text/javascript">
-		alert("Access Denied! Please login first.")
-		window.location.href="../student_authentication.jsp"
-	</script>
-	<%
-	return;
-	}
-	%>
+ <%@ page import="java.util.*" %>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -58,9 +48,68 @@
         </div>
     </div>
     <main class="main_content">
-        	<h1>MY DOMAIN SECTION</h1>
-    </main>
+        	   <!-- Course Card -->
+          <section class="card">
+            <h2>
+              <i class="fa-solid fa-layer-group"></i>
+              ${courseName}
+            </h2>
+            <p>Batch: ${batch}</p>
 
+            <div class="grid">
+              <div class="box">
+                <i class="fa-solid fa-chalkboard-user"></i><br>
+                Instructor<br><b>${instructor}</b>
+              </div>
+
+              <div class="box">
+                <i class="fa-solid fa-clock"></i><br>
+                Duration<br><b>${duration}</b>
+              </div>
+
+              <div class="box">
+                <i class="fa-solid fa-calendar-days"></i><br>
+                Start Date<br><b>${startDate}</b>
+              </div>
+
+              <div class="box">
+                <i class="fa-solid fa-calendar-check"></i><br>
+                End Date<br><b>${endDate}</b>
+              </div>
+            </div>
+          </section>
+
+          <!-- Skills Section -->
+          <section class="card">
+            <h3>
+              <i class="fa-solid fa-code"></i>
+              Skills & Technologies Covered
+            </h3>
+
+            <div class="tags">
+              <% List<String> skills = (List<String>) request.getAttribute("skills");
+                  if(skills != null){
+                  for(String skill : skills){
+                  %>
+                  <span>
+                    <i class="fa-solid fa-check"></i>
+                    <%= skill %>
+                  </span>
+                  <% } } %>
+            </div>
+          </section>
+    </main>
+	<%
+	if(session.getAttribute("userrole")==null){
+%>
+	<script type="text/javascript">
+		alert("Access Denied! Please login first.")
+		window.location.href="../student_authentication.jsp"
+	</script>
+	<%
+	return;
+	}
+	%>
     <script>
         const logout_btn=document.getElementById("logout_btn");
         logout_btn.addEventListener('click',()=>{

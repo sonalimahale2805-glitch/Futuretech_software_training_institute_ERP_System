@@ -1,15 +1,5 @@
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<%
-	if(session.getAttribute("userrole")==null){
-%>
-	<script type="text/javascript">
-		alert("Access Denied! Please login first.")
-		window.location.href="../admin_authentication.jsp"
-	</script>
-	<%
-	return;
-	}
-	%>
+<%@ page import="java.util.*" %>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -59,9 +49,106 @@
         </div>
     </div>
      <main class="main_content">
-     	<h1>Student Directory Section</h1>
+     	    <div class="table_wrapper">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Student</th>
+                            <th>Contact</th>
+                            <th>Course</th>
+                            <th>Batch</th>
+                            <th>Progress</th>
+                            <th>Status</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+
+                        <% List<Map<String,Object>> students =
+                            (List<Map<String,Object>>)request.getAttribute("students");
+
+                                if(students != null){
+                                for(Map<String,Object> s : students){
+                                    %>
+
+                                    <tr>
+                                        <td>
+                                            <strong>
+                                                <%= s.get("name") %>
+                                            </strong><br>
+                                            <span>ID: <%= s.get("id") %></span>
+                                        </td>
+
+                                        <td>
+                                            <%= s.get("email") %><br>
+                                                <i class="fa-solid fa-phone call_icon"></i>
+                                                <%= s.get("phone") %>
+                                        </td>
+
+                                        <td>
+                                            <%= s.get("course") %>
+                                        </td>
+                                        <td>
+                                            <%= s.get("batch") %>
+                                        </td>
+
+                                        <td>
+                                            <div class="progress">
+                                                <span style="width:<%= s.get(" progress") %>%"></span>
+                                            </div>
+                                            <%= s.get("progress") %>%
+                                        </td>
+
+                                        <td>
+                                            <span class="status <%= s.get(" status") %>">
+                                                <%= s.get("status") %>
+                                            </span>
+                                        </td>
+
+                                        <td class="actions">
+
+                                            <a href="StudentDirectory?action=view&id=<%= s.get(" id") %>">
+                                                <i class="fa-solid fa-eye view"></i>
+                                            </a>
+
+                                            <a href="StudentDirectory?action=edit&id=<%= s.get(" id") %>">
+                                                <i class="fa-solid fa-pen edit"></i>
+                                            </a>
+
+                                            <form action="StudentDirectory" method="post" style="display:inline;">
+                                                <input type="hidden" name="action" value="delete">
+                                                <input type="hidden" name="id" value="<%= s.get(" id") %>">
+                                                <button type="submit" style="background:none;border:none;">
+                                                    <i class="fa-solid fa-trash delete"></i>
+                                                </button>
+                                            </form>
+
+                                        </td>
+                                        <% } }else{ %>
+                                    <tr>
+                                        <td colspan="7">No Students Found</td>
+                                    </tr>
+                                    <% } %>
+
+                    </tbody>
+                </table>
+            </div>
      </main>
     
+    
+    
+    <%
+	if(session.getAttribute("userrole")==null){
+%>
+	<script type="text/javascript">
+		alert("Access Denied! Please login first.")
+		window.location.href="../admin_authentication.jsp"
+	</script>
+	<%
+	return;
+	}
+	%>
 	<script>
         const menuBtn = document.getElementById("menuBtn");
         const navbar_and_logout_section = document.getElementById("navbar_and_logout_section");
@@ -82,6 +169,18 @@
         	if(confirm("Do you realy want to Logout"))
         		window.location.href="${pageContext.request.contextPath}/LogoutServlet";
         })
+        
+        document.querySelector(".add_btn").onclick = function() {
+    document.getElementById('addStudentModal').style.display = 'block';
+}
+
+
+window.onclick = function(event) {
+    let modal = document.getElementById('addStudentModal');
+    if (event.target === modal) {
+        modal.style.display = 'none';
+    }
+}
     </script>
 </body>
 

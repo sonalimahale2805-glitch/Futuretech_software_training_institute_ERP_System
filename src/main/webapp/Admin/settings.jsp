@@ -1,15 +1,5 @@
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<%
-	if(session.getAttribute("userrole")==null){
-%>
-	<script type="text/javascript">
-		alert("Access Denied! Please login first.")
-		window.location.href="../admin_authentication.jsp"
-	</script>
-	<%
-	return;
-	}
-	%>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -61,6 +51,19 @@
 		<main class="main_content">
      	<h1>Settings Section</h1>
      </main>
+     
+     
+     <%
+	if(session.getAttribute("userrole")==null){
+%>
+	<script type="text/javascript">
+		alert("Access Denied! Please login first.")
+		window.location.href="../admin_authentication.jsp"
+	</script>
+	<%
+	return;
+	}
+	%>
 <script>
         const menuBtn = document.getElementById("menuBtn");
         const navbar_and_logout_section = document.getElementById("navbar_and_logout_section");
