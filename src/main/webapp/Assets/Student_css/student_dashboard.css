@@ -1,3 +1,4 @@
+@charset "UTF-8";
 :root {
     --bg_color: #0f172a;
     --card_bg_color: #151e31;
@@ -234,12 +235,20 @@ hr {
 
 .profile_logo {
     background: linear-gradient(135deg, var(--btn_g_left), var(--btn_g_right));
-    padding: 15px;
-    flex-shrink: 0;
     border-radius: 50%;
+    padding: 15px 19px ; 
     color: var(--white_text);
+    font-weight: bold;
+    overflow: hidden;
 }
 
+/* Ensure the h3 inside doesn't have default margins that push the circle */
+.profile_logo h3 {
+    margin: 0;
+    
+    font-size:20px;
+    font-weight:700;
+}
 /* navbar section */
 
 .navbar_section {
@@ -283,13 +292,12 @@ hr {
     color: var(--white_text);
     font-size: 21px;
     box-shadow: 0 10px 25px var(--card_shadow);
-    transition: 0.3s;
+    transition:.3s;
 
 }
 
 .active:hover {
     box-shadow: 0 0 10px 1px var(--btn_g_right);
-
 }
 
 .deactive {

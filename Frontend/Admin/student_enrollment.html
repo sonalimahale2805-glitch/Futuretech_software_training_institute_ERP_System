@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Student Enrollment</title>
+  <link rel="stylesheet" href="student_enrollment.css">
+</head>
+<body>
+
+<div class="card">
+  <h2>New Student Enrollment</h2>
+
+  <label>Student ID</label>
+  <input type="text" value="STU4611" readonly>
+
+  <label>Name</label>
+  <input type="text" placeholder="Enter Name">
+
+  <label>Contact</label>
+  <input type="text" placeholder="Enter Contact Number">
+
+  <label>Email</label>
+  <input type="email" placeholder="Enter Email">
+
+  <label>Domain</label>
+  <div class="dropdown">
+    <div class="selected">Select Domain</div>
+    <ul class="options">
+      <li>Java</li>
+      <li>Python</li>
+      <li>Web Development</li>
+      <li>Data Science</li>
+      <li>AI / ML</li>
+    </ul>
+  </div>
+
+  <button class="submit">Submit</button>
+  <button class="cancel">Cancel</button>
+</div>
+
+<script src="student_enrollment.js"></script>
+</body>
+</html>
