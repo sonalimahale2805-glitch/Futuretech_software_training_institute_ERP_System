@@ -1,0 +1,154 @@
+/* --- Basic Layout Setup --- */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    background-color: #0f172a;
+    color: #f1f5f9;
+}
+
+/* --- Main Content (Desktop) --- */
+.main_content {
+    margin-left: 240px; /* Sidebar chi jag sodne */
+    padding: 30px;
+    min-height: 100vh;
+    transition: all 0.3s ease;
+}
+
+.assignment-wrapper h3 {
+    color: #94a3b8;
+    margin: 25px 0 15px 0;
+    font-size: 20px;
+}
+
+/* --- Card & Form Styling --- */
+.card {
+    background: #1e293b;
+    padding: 30px;
+    border-radius: 16px;
+    border: 1px solid #334155;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+    margin-bottom: 30px;
+}
+
+.form-row { display: flex; gap: 20px; margin-bottom: 20px; }
+
+.input-field, .text-area {
+    background: #0b1120;
+    border: 1px solid #334155;
+    color: white;
+    padding: 14px;
+    border-radius: 10px;
+    width: 100%;
+    outline: none;
+}
+
+.text-area { height: 120px; resize: none; }
+
+.form-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.submit-btn {
+    background: linear-gradient(135deg, #8b5cf6, #3b82f6);
+    color: white;
+    border: none;
+    padding: 12px 35px;
+    border-radius: 10px;
+    cursor: pointer;
+    font-weight: 700;
+}
+
+/* --- Table Styling (Desktop) --- */
+.table-card { padding: 0; overflow: hidden; }
+
+.tracker-table { width: 100%; border-collapse: collapse; }
+
+.tracker-table th {
+    text-align: left;
+    color: #94a3b8;
+    padding: 15px;
+    border-bottom: 2px solid #334155;
+    font-size: 12px;
+    text-transform: uppercase;
+}
+
+.tracker-table td {
+    padding: 18px 15px;
+    border-bottom: 1px solid #334155;
+    font-size: 14px;
+}
+
+/* --- Status Badges --- */
+.badge {
+    padding: 6px 14px;
+    border-radius: 50px;
+    font-size: 11px;
+    font-weight: 700;
+}
+
+.status-submitted { background: rgba(45, 212, 191, 0.1); color: #2dd4bf; border: 1px solid #2dd4bf4d; }
+.status-reviewed { background: rgba(74, 222, 128, 0.1); color: #4ade80; border: 1px solid #4ade804d; }
+.status-missing { background: rgba(239, 68, 68, 0.1); color: #ef4444; border: 1px solid #ef44444d; }
+
+.review-link {
+    color: #8b5cf6;
+    border: 1px solid #8b5cf6;
+    padding: 7px 15px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-size: 12px;
+}
+
+/* ==========================================
+   MOBILE VIEW FIX (Screens below 768px)
+   ========================================== */
+@media (max-width: 768px) {
+    /* 1. Sidebar overlap thambvnyasathi */
+    .main_content {
+        margin-left: 0 !important; 
+        padding: 15px !important;
+        margin-top: 100px !important; /* Header sathi gap */
+    }
+
+    /* 2. Form items ekakhali ek */
+    .form-row {
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    .form-footer {
+        flex-direction: column;
+        gap: 20px;
+        align-items: stretch;
+    }
+
+    .submit-btn { width: 100%; }
+
+    /* 3. Table Horizontal Scroll Fix */
+    .table-card {
+        overflow-x: auto !important; /* Mobile var scroll bar yeil */
+        display: block;
+    }
+
+    .tracker-table {
+        min-width: 700px !important; /* Table press hou naye mhanun */
+    }
+
+    .tracker-table th, .tracker-table td {
+        padding: 12px 10px;
+        font-size: 13px;
+    }
+
+    /* 4. Review button text break hou naye mhanun */
+    .review-link {
+        white-space: nowrap;
+        display: inline-block;
+    }
+}    
